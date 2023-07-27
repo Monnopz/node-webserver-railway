@@ -1,0 +1,43 @@
+Un webserver es un servidor web que sirve contenido HTML, CSS, JS, o lo que nosotros queramos
+Se pueden crear paginas y renderizarlas del lado del backend para mandarselo al cliente
+
+Diferencias entre webserver, REST, RESTFul, APIRest: El WebServer es básicamente servidor que despliega contenido HTML, como un hosting normal.
+Y las demás hacen referencia a servicios que pueden ser consumidos mediante peticiones http, fetch u otro método aunque sean de diferentes dominios (si tienen habilitado el CORS)
+
+En Node ya existe un HTTP Server nativo
+    // request, lo que solicitan
+    // response, lo que el servidor responde al cliente
+
+Express es el framework de Node mas popular para crear Webservers o RestServers
+
+
+app.get('/', function (request, response) { //Con Express Las rutas se definen asi
+    response.send('Home');
+});
+
+
+// Middleware, funcion que se ejecuta antes de hacer otra accion
+// Servir contenido estatico
+app.use( express.static('public') ); // Esta linea (use) tiene prioridad sobre las rutas de abajo (get)
+
+    response.sendFile(__dirname + '/public/404.html'); //__dirname es una variable global que indica el path absoluto desde donde esta la raiz del proyecto de node
+
+
+Handlebars son paginas dinamicas renderizables desde el backend. Son recomendados para soluciones sencillas.
+Handlebars es una extension de un lenguaje llamado Mustache que tiene como peculariedad el uso de dobles llaves {{}}
+Handlebars prerenderiza en el backend la pagina y entrega al cliente la pagina ya hecha, en un unico elemento
+Cuando son soluciones mas complejas, se utiliza Angular, Vue, React, etc
+Otra ventaja de los Handlebars es que se puede reutilizar codigo e implementarlo en otras vistas
+
+//MVC, Modelo Vista Controlador, parte del funcionamiento de Handlebars
+//La carpeta de vistas se tiene que llamar views, por defecto, debido a la configuracion predeterminada de Handlebars
+app.set('view engine', 'hbs'); // Setear el engine de Handlebars; quitar esta linea si no queremos renderizar vistas en el backend
+
+Nodemon solo recarga achivos de js, no de otros tipos de archivos
+
+
+Para subir a produccion, hay que realizar algunos ajustes al proyecto de Node
+Añadir variables de entorno para cambiar el puerto donde corre la aplicacion
+En el package.json es necesario añadir, tal cual, el comando start debido a que varios hostings que corren aplicaciones de node los corren bajo este nombre para dar de alta servidores de node y se jecutara bajo npm start
+
+
