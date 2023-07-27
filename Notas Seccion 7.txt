@@ -40,4 +40,6 @@ Para subir a produccion, hay que realizar algunos ajustes al proyecto de Node
 Añadir variables de entorno para cambiar el puerto donde corre la aplicacion
 En el package.json es necesario añadir, tal cual, el comando start debido a que varios hostings que corren aplicaciones de node los corren bajo este nombre para dar de alta servidores de node y se jecutara bajo npm start
 
+En Raiwail cuando se deploya por primera vez un proyecto, hay que configurar la opcion que permite exponer el proyecto a todo INTERNET
+El paquete npm http-server permite instalar un servidor de pruebas para aplicaciones frontend como Vue, Angular, React, etc
 
